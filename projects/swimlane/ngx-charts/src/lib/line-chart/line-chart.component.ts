@@ -48,6 +48,7 @@ import { getUniqueXDomainValues, getScaleType } from '../common/domain.helper';
           [xScale]="xScale"
           [dims]="dims"
           [showGridLines]="showGridLines"
+          [xAxisTickClassByTick]="xAxisTickClassByTick"
           [showLabel]="showXAxisLabel"
           [labelText]="xAxisLabel"
           [trimTicks]="trimXAxisTicks"
@@ -187,6 +188,7 @@ export class LineChartComponent extends BaseChartComponent {
   @Input() timeline;
   @Input() gradient: boolean;
   @Input() showGridLines: boolean = true;
+  @Input() xAxisTickClassByTick;
   @Input() curve: any = curveLinear;
   @Input() activeEntries: any[] = [];
   @Input() schemeType: string;
