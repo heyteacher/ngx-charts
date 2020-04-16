@@ -33,7 +33,7 @@ import { reduceTicks } from './ticks.helper';
     <svg:g *ngFor="let tick of ticks" [attr.transform]="tickTransform(tick)">
       <svg:g *ngIf="showGridLines" [attr.transform]="gridLineTransform()">
         <svg:line
-          class="gridline-path gridline-path-vertical {{ xAxisTickClassByTick ? xAxisTickClassByTick(tick) : '' }}"
+          class="gridline-path gridline-path-vertical {{ axisTickClassByTick ? axisTickClassByTick(tick) : '' }}"
           [attr.y1]="-gridLineHeight"
           y2="0"
         />
@@ -52,7 +52,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
   @Input() maxTickLength: number = 16;
   @Input() tickFormatting;
   @Input() showGridLines = false;
-  @Input() xAxisTickClassByTick;
+  @Input() axisTickClassByTick;
   @Input() gridLineHeight;
   @Input() width;
   @Input() rotateTicks: boolean = true;
@@ -101,7 +101,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
     } else if (scale.tickFormat) {
       this.tickFormat = scale.tickFormat.apply(scale, this.tickArguments);
     } else {
-      this.tickFormat = function (d) {
+      this.tickFormat = function(d) {
         if (d.constructor.name === 'Date') {
           return d.toLocaleDateString();
         }
@@ -112,7 +112,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
     const angle = this.rotateTicks ? this.getRotationAngle(this.ticks) : null;
 
     this.adjustedScale = this.scale.bandwidth
-      ? function (d) {
+      ? function(d) {
           return this.scale(d) + this.scale.bandwidth() * 0.5;
         }
       : this.scale;
