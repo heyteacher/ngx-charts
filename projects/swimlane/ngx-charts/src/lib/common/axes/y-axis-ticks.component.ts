@@ -154,7 +154,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
     } else if (scale.tickFormat) {
       this.tickFormat = scale.tickFormat.apply(scale, this.tickArguments);
     } else {
-      this.tickFormat = function(d) {
+      this.tickFormat = function (d) {
         if (d.constructor.name === 'Date') {
           return d.toLocaleDateString();
         }
@@ -163,7 +163,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
     }
 
     this.adjustedScale = scale.bandwidth
-      ? function(d) {
+      ? function (d) {
           return scale(d) + scale.bandwidth() * 0.5;
         }
       : scale;
@@ -174,7 +174,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
 
     switch (this.orient) {
       case 'top':
-        this.transform = function(tick) {
+        this.transform = function (tick) {
           return 'translate(' + this.adjustedScale(tick) + ',0)';
         };
         this.textAnchor = 'middle';
@@ -183,7 +183,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
         this.dy = sign < 0 ? '0em' : '.71em';
         break;
       case 'bottom':
-        this.transform = function(tick) {
+        this.transform = function (tick) {
           return 'translate(' + this.adjustedScale(tick) + ',0)';
         };
         this.textAnchor = 'middle';
@@ -192,7 +192,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
         this.dy = sign < 0 ? '0em' : '.71em';
         break;
       case 'left':
-        this.transform = function(tick) {
+        this.transform = function (tick) {
           return 'translate(0,' + this.adjustedScale(tick) + ')';
         };
         this.textAnchor = 'end';
@@ -201,7 +201,7 @@ export class YAxisTicksComponent implements OnChanges, AfterViewInit {
         this.dy = '.32em';
         break;
       case 'right':
-        this.transform = function(tick) {
+        this.transform = function (tick) {
           return 'translate(0,' + this.adjustedScale(tick) + ')';
         };
         this.textAnchor = 'start';

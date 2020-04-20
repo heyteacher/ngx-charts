@@ -101,7 +101,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
     } else if (scale.tickFormat) {
       this.tickFormat = scale.tickFormat.apply(scale, this.tickArguments);
     } else {
-      this.tickFormat = function(d) {
+      this.tickFormat = function (d) {
         if (d.constructor.name === 'Date') {
           return d.toLocaleDateString();
         }
@@ -112,7 +112,7 @@ export class XAxisTicksComponent implements OnChanges, AfterViewInit {
     const angle = this.rotateTicks ? this.getRotationAngle(this.ticks) : null;
 
     this.adjustedScale = this.scale.bandwidth
-      ? function(d) {
+      ? function (d) {
           return this.scale(d) + this.scale.bandwidth() * 0.5;
         }
       : this.scale;
