@@ -33,7 +33,7 @@ import { reduceTicks } from './ticks.helper';
     <svg:g *ngFor="let tick of ticks" [attr.transform]="tickTransform(tick)">
       <svg:g *ngIf="showGridLines" [attr.transform]="gridLineTransform()">
         <svg:line
-          class="gridline-path gridline-path-vertical {{ axisTickClassByTick ? axisTickClassByTick(tick) : '' }}"
+          [ngClass]="'gridline-path gridline-path-vertical ' + (axisTickClassByTick ? axisTickClassByTick(tick) : '')"
           [attr.y1]="-gridLineHeight"
           y2="0"
         />
