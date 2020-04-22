@@ -43,7 +43,7 @@ import { roundedRect } from '../../common/shape.helper';
       <svg:g *ngIf="showGridLines" [attr.transform]="gridLineTransform()">
         <svg:line
           *ngIf="orient === 'left'"
-          class="gridline-path gridline-path-horizontal {{ axisTickClassByTick ? axisTickClassByTick(tick) : '' }}"
+          [ngClass]="'gridline-path gridline-path-horizontal ' + (axisTickClassByTick ? axisTickClassByTick(tick) : '')"
           x1="0"
           [attr.x2]="gridLineWidth"
         />
