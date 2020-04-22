@@ -26,7 +26,7 @@ import { YAxisTicksComponent } from './y-axis-ticks.component';
         [scale]="yScale"
         [orient]="yOrient"
         [showGridLines]="showGridLines"
-        [axisTickClassByTick]="axisTickClassByTick"
+        [gridLineNgStyleByAxisTick]="gridLineNgStyleByAxisTick"
         [gridLineWidth]="dims.width"
         [referenceLines]="referenceLines"
         [showRefLines]="showRefLines"
@@ -56,7 +56,7 @@ export class YAxisComponent implements OnChanges {
   @Input() tickFormatting;
   @Input() ticks: any[];
   @Input() showGridLines = false;
-  @Input() axisTickClassByTick;
+  @Input() gridLineNgStyleByAxisTick;
   @Input() showLabel;
   @Input() labelText;
   @Input() yAxisTickInterval;

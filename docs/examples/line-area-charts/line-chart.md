@@ -50,9 +50,8 @@
 | xScaleMax             | any                |               | the maximum value of the x axis \(if the x scale is linear or time\)                                                                                                                                                                       |
 | yScaleMin             | number             |               | the minimum value of the y axis                                                                                                                                                                                                            |
 | yScaleMax             | number             |               | the maximum value of the y axis                                                                                                                                                                                                            |
-| xAxisTickClassByTick  | function           |               | the function which returns the class set to the line grid based on a x axis tick value 
-| yAxisTickClassByTick  | function           |               | the function which returns the class set to the line grid based on a y tick value
- 
+| gridLineNgStyleByXAxisTick | function      |               | the function which returns the ngStyle expression to apply on line grid based on xAxis tick value 
+| gridLineNgStyleByYAxisTick | function      |               | the function which returns the ngStyle expression to apply on line grid based on yAxis tick value
 ## Outputs
 
 | Property   | Description                                |
