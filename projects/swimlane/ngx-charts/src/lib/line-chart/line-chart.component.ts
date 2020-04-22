@@ -191,7 +191,7 @@ export class LineChartComponent extends BaseChartComponent {
   @Input() timeline;
   @Input() gradient: boolean;
   @Input() showGridLines: boolean = true;
-  @Input() gridLineNgStyleByXAdxisTick;
+  @Input() gridLineNgStyleByXAxisTick;
   @Input() gridLineNgStyleByYAxisTick;
   @Input() curve: any = curveLinear;
   @Input() activeEntries: any[] = [];
