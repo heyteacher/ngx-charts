@@ -219,6 +219,7 @@ export class AreaChartStackedComponent extends BaseChartComponent {
   timelineXScale: any;
   timelineYScale: any;
   timelineXDomain: any;
+  timelineYDomain: any;
   timelineTransform: any;
   timelinePadding: number = 10;
 
@@ -301,7 +302,8 @@ export class AreaChartStackedComponent extends BaseChartComponent {
       this.timelineWidth = this.dims.width;
       this.timelineXDomain = this.getXDomain();
       this.timelineXScale = this.getXScale(this.timelineXDomain, this.timelineWidth);
-      this.timelineYScale = this.getYScale(this.yDomain, this.timelineHeight);
+      this.timelineYDomain = this.getYDomain(false);
+      this.timelineYScale = this.getYScale(this.timelineYDomain, this.timelineHeight);
       this.timelineTransform = `translate(${this.dims.xOffset}, ${-this.margin[2]})`;
     }
   }
@@ -345,7 +347,7 @@ export class AreaChartStackedComponent extends BaseChartComponent {
     return domain;
   }
 
-  getYDomain(): any[] {
+  getYDomain(applyFilteredDomain:boolean = true): any[] {
     const domain = [];
 
     for (let i = 0; i < this.xSet.length; i++) {
@@ -366,8 +368,14 @@ export class AreaChartStackedComponent extends BaseChartComponent {
           sum += d.value;
         }
       }
-
-      domain.push(sum);
+      if (applyFilteredDomain && this.filteredDomain) {
+        if (val >= this.filteredDomain[0] && val <=this.filteredDomain[1]) {
+          domain.push(sum);
+        }
+      }
+      else {
+        domain.push(sum);
+      }
     }
 
     const min = this.yScaleMin ? this.yScaleMin : Math.min(0, ...domain);
@@ -404,7 +412,9 @@ export class AreaChartStackedComponent extends BaseChartComponent {
   updateDomain(domain): void {
     this.filteredDomain = domain;
     this.xDomain = this.filteredDomain;
+    this.yDomain = this.getYDomain()
     this.xScale = this.getXScale(this.xDomain, this.dims.width);
+    this.yScale = this.getYScale(this.yDomain, this.dims.height);
   }
 
   updateHoveredVertical(item) {
